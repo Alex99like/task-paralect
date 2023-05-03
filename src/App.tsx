@@ -1,11 +1,13 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/router'
 import { MantineProvider } from '@mantine/core'
+import { store } from './store/store'
+import { Provider } from 'react-redux'
 
 function App() {
-
   return (
-    <MantineProvider
+    <Provider store={store}>
+      <MantineProvider
       withNormalizeCSS
       withGlobalStyles
       withCSSVariables
@@ -21,9 +23,10 @@ function App() {
           blackPrimary: ['#232134']
         }
       }}
-    >
-      <RouterProvider router={router} />
-    </MantineProvider>
+      >
+        <RouterProvider router={router} />
+      </MantineProvider>
+    </Provider>
   )
 }
 
