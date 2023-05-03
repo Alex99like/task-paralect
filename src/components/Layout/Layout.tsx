@@ -11,8 +11,6 @@ export const Layout = () => {
 
   useEffect(() => {
     if (!user) authLogin()
-    console.log(user)
-
   }, [authLogin, user])
 
   return (

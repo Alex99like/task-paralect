@@ -16,12 +16,12 @@ function App() {
           boxSizing: 'border-box',
           margin: 0,
           padding: 0,
-          fontFamily: 'Inter'
+          fontFamily: 'Inter',
         }),
         colors: {
           bluePrimary: ['#5E96FC'],
           blackPrimary: ['#232134']
-        }
+        },
       }}
       >
         <RouterProvider router={router} />
