@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as authActions from '../store/auth/authActions'
+import * as authActions from '../store/root/authActions'
 
 const allActions = {
   ...authActions

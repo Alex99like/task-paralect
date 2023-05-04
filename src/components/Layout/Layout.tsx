@@ -6,12 +6,12 @@ import { useActions } from "../../hooks/useActions"
 import { useEffect } from "react"
 
 export const Layout = () => {
-  const { user } = useAppSelector(state => state.user)
-  const { authLogin } = useActions()
+  //const { user } = useAppSelector(state => state.root)
+  // const { authLogin } = useActions()
 
-  useEffect(() => {
-    if (!user) authLogin()
-  }, [authLogin, user])
+  // useEffect(() => {
+  //   if (!user) authLogin()
+  // }, [authLogin, user])
 
   return (
     <AppShell

@@ -1,12 +1,17 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import { reducer } from './auth/authSlice'
+import { reducer } from './root/authSlice'
+import { jobsApi } from '../service/JobsService'
 
 const rootReducer = combineReducers({
-  user: reducer
+  root: reducer,
+  [jobsApi.reducerPath]: jobsApi.reducer
 })
 
 export const store = configureStore({
   reducer: rootReducer,
+  // middleware: (getDefaultMiddleware) => {
+  //     getDefaultMiddleware().concat(jobsApi.middleware)
+  // },
 })
 
 

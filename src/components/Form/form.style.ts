@@ -50,6 +50,7 @@ export const useFormStyle = createStyles((theme) => ({
     paddingLeft: 19,
     paddingBottom: 18,
     width: 315,
+    minWidth: 315,
     height: 360,
     border: '1px solid #EAEBED',
     borderRadius: 12,

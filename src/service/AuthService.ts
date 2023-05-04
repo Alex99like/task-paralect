@@ -1,4 +1,4 @@
-import { IRequestAuth, IResponseAuth } from "../store/auth/types"
+import { IRequestAuth, IResponseAuth } from "../store/root/types"
 import { getLocalStorage } from "../utils/localStorage"
 
 export const AuthService = {

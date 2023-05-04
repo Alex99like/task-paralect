@@ -2,6 +2,8 @@ import { controlCss, useFormStyle } from "./form.style"
 import { Text, UnstyledButton, NumberInput, Select, Button, CSSObject } from '@mantine/core'
 import ResetIcon from '../../assets/reset.svg'
 import DownIcon from '../../assets/down.svg'
+import { UseFormReturnType } from "@mantine/form"
+import { IFormJob } from "../../pages/Jobs"
 
 const inputCss: CSSObject = {
   background: 'transparent', 
@@ -23,7 +25,9 @@ const inputWrapper: CSSObject = {
   }
 }
 
-export const Form = () => { 
+type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob> 
+
+export const Form = ({ form }: { form: FormProps }) => { 
   const { classes } = useFormStyle()
   const options = [
     { label: "IT", value: "it" },
@@ -50,6 +54,7 @@ export const Form = () => {
           className={classes.mtOne}
           labelProps={{ className: classes.label }}
           styles={{input: inputWrapper }}
+          onChange={(e) => form.setFieldValue('filter.industry', e)}
       />
 
       <NumberInput
@@ -61,6 +66,7 @@ export const Form = () => {
         rightSectionWidth={35}
         styles={{ ...controlCss }}
         rightSectionProps={{ style: { border: 'transparent' } }}
+        onChange={(e) => form.setFieldValue('filter.salary.from', e)}
       />
       <NumberInput
         variant="default"
@@ -70,6 +76,7 @@ export const Form = () => {
         rightSectionWidth={35}
         styles={{ ...controlCss }}
         rightSectionProps={{ style: { border: 'transparent' } }}
+        onChange={(e) => form.setFieldValue('filter.salary.to', e)}
       />
 
       <Button

@@ -1,8 +1,14 @@
 import { createStyles } from '@mantine/core'
 
 export const useSearchStyle = createStyles((theme) => ({
+  root: {
+    
+    
+  },
   wrapper: {
-    width: 773,
+    minWidth: 320, 
+    width: "100%", 
+    maxWidth: 773,
     border: '1px solid #EAEBED',
     borderRadius: 8,
     height: 48,
