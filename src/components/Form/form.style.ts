@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core'
+import { createStyles, CSSObject } from '@mantine/core'
 
 export const useFormStyle = createStyles((theme) => ({
   text: {
@@ -40,7 +40,8 @@ export const useFormStyle = createStyles((theme) => ({
     fontSize: 14,
     lineHeight: 1.5,
     display: 'flex',
-    gap: 3
+    gap: 3,
+    
   },
 
   wrapper: {
@@ -69,3 +70,46 @@ export const useFormStyle = createStyles((theme) => ({
     fontFamily: 'Inter',
   }
 }))
+
+export const inputNumWrapper: CSSObject = { 
+  
+}
+
+export const controlCss: Record<string, CSSObject> = {
+  input: {
+    height: 42,
+    background: '#FFFFFF',
+    border: '1px solid #D5D6DC',
+    borderRadius: 8, 
+    padding: 11,
+    
+    '::placeholder': {
+      fontFamily: 'Inter',
+      fontWeight: 400,
+      left: 1,
+      fontSize: 14,
+    }
+  },
+  control: {
+    cursor: 'pointer'
+  },
+  controlUp: {
+    border: 'none',
+    width: 40,
+    stroke: 'lightgrey',
+    alignSelf: 'center',
+    color: 'rgba(172, 173, 185, 1)',
+    paddingTop: 7,
+    overflow: 'hidden',
+    borderTopRightRadius: 13,
+  },
+  controlDown: {
+    border: 'none',
+    width: 40,
+    stroke: 'lightgrey',
+    alignSelf: 'center',
+    color: 'rgba(172, 173, 185, 1)',
+    paddingBottom: 10,
+    borderBottomRightRadius: 20,
+  }
+}

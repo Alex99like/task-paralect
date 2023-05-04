@@ -1,4 +1,4 @@
-import { useFormStyle } from "./form.style"
+import { controlCss, useFormStyle } from "./form.style"
 import { Text, UnstyledButton, NumberInput, Select, Button, CSSObject } from '@mantine/core'
 import ResetIcon from '../../assets/reset.svg'
 import DownIcon from '../../assets/down.svg'
@@ -14,6 +14,8 @@ const inputWrapper: CSSObject = {
   background: '#FFFFFF',
   border: '1px solid #D5D6DC',
   borderRadius: 8,
+  padding: 11,
+  paddingBottom: 13,
   '::placeholder': {
     fontFamily: 'Inter',
     fontWeight: 400,
@@ -56,36 +58,8 @@ export const Form = () => {
         w={'100%'}
         className={classes.mtTwo}
         labelProps={{ className: classes.label }}
-        styles={{input: { 
-            height: 42,
-            background: '#FFFFFF',
-            border: '1px solid #D5D6DC',
-            borderRadius: 8, 
-            padding: 11,
-            overflow: 'hidden',
-            '::placeholder': {
-              fontFamily: 'Inter',
-              fontWeight: 400,
-              left: 1,
-              fontSize: 14,
-            }
-          }, 
-          control: {
-            cursor: 'pointer'
-          },
-          controlUp: {
-           // backgroundColor: "transparent",
-            //border: 'none',
-            //top: 4,
-            color: 'rgba(172, 173, 185, 1)',
-          },
-          controlDown: {
-            //backgroundColor: "transparent",
-            //border: 'none',
-            //bottom: 3,
-            color: 'rgba(172, 173, 185, 1)'
-          }
-        }}
+        rightSectionWidth={35}
+        styles={{ ...controlCss }}
         rightSectionProps={{ style: { border: 'transparent' } }}
       />
       <NumberInput
@@ -93,36 +67,8 @@ export const Form = () => {
         w={'100%'}
         placeholder="До"
         labelProps={{ className: classes.label }}
-        styles={{input: { 
-            height: 42,
-            background: '#FFFFFF',
-            border: '1px solid #D5D6DC',
-            padding: 11,
-            paddingTop: 8,
-            borderRadius: 8,
-            '::placeholder': {
-              fontFamily: 'Inter',
-              fontWeight: 400,
-              fontSize: 14,
-            } 
-          }, 
-          control: {
-            width: 35,
-            right: 11,
-          },
-          controlUp: {
-            backgroundColor: "transparent",
-            border: 'none',
-            top: 3,
-            color: 'rgba(172, 173, 185, 1)'
-          },
-          controlDown: {
-            backgroundColor: "transparent",
-            border: 'none',
-            bottom: 4,
-            color: 'rgba(172, 173, 185, 1)',
-          }
-        }}
+        rightSectionWidth={35}
+        styles={{ ...controlCss }}
         rightSectionProps={{ style: { border: 'transparent' } }}
       />
 

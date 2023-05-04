@@ -1,12 +1,13 @@
 import { Flex } from '@mantine/core'
 import { Form } from '../components/Form/Form'
+import { Search } from '../components/Form/Search'
 
 export const Jobs = () => {
   return (
-    <Flex style={{ width: '70%', margin: '0 auto' }}>
+    <Flex mt={24} justify={'center'} columnGap={28}>
       <Form />
       <Flex>
-
+        <Search />
       </Flex>
     </Flex>
   )
