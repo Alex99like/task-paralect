@@ -1,4 +1,4 @@
-import { TextInput, ActionIcon, Image, Button } from "@mantine/core"
+import { TextInput, Image, Button } from "@mantine/core"
 import { useSearchStyle } from "./search.style"
 import SearchIcon from '../../assets/search.svg'
 import { UseFormReturnType } from "@mantine/form"

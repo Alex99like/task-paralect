@@ -2,15 +2,17 @@ import { Button, Flex } from '@mantine/core'
 import { Form } from '../components/Form/Form'
 import { Search } from '../components/Form/Search'
 import { useForm } from '@mantine/form'
+import { useEffect } from 'react';
+import { JobsService } from '../service/JobsService';
 
 export interface IFormJob {
   search: string;
   filter: {
-      industry: string | null;
-      salary: {
-          from: number;
-          to: number;
-      };
+    industry: string | null;
+    salary: {
+      from: number;
+      to: number;
+    };
   };
 }
 
@@ -27,8 +29,17 @@ export const Jobs = () => {
       }
     }
   })
-  
 
+  const getCat = async () => {
+    const res = await JobsService.getCatalogues()
+    console.log(res)
+  }
+
+  useEffect(() => {
+    getCat()
+  }, [])
+
+  
   return (
     <Flex justify={'center'} columnGap={28} style={{ margin: '24px auto' }}>
       <Form form={form} />
