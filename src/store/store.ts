@@ -1,8 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { reducer } from './root/authSlice'
+import { reducer as jobsReduces } from './jobs/jobsSlice' 
 
 const rootReducer = combineReducers({
   root: reducer,
+  jobs: jobsReduces
 })
 
 export const store = configureStore({

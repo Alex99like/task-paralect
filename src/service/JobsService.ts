@@ -1,12 +1,12 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 import { IFormJob } from '../pages/Jobs'
-import { XApiAppId, XSecretKey, catalogues, vacations } from '../api/consts'
+import { catalogues, vacations } from '../api/consts'
 import queryString from 'query-string'
 import axios from 'axios'
 import { createHeaders } from '../api/url.config'
+import { ICategory, IReqVacation } from '../types/vacantion.type'
 
 export const JobsService = {
-  async getVacation({ search, filter: { industry, salary: { from, to } } }: IFormJob) {
+  async getVacation({ search, filter: { industry, salary: { from, to } } }: IFormJob): Promise<IReqVacation> {
     const queryParams = {
       keyword: search,
       payment_from: from,
@@ -18,15 +18,15 @@ export const JobsService = {
     
     const queryStringified = queryString.stringify(queryParams);
 
-    const { data } = await axios.get(`${vacations}?/${queryStringified}`, {
+    const { data } = await axios.get<IReqVacation>(`${vacations}?/${queryStringified}`, {
       ...createHeaders(),
     })
-
+    console.log(data)
     return data 
   },
   
-  async getCatalogues() {
-    const { data } = await axios.get(`${catalogues}`, {
+  async getCategories(): Promise<Array<ICategory>> {
+    const { data } = await axios.get<Array<ICategory>>(`${catalogues}`, {
       ...createHeaders()
     })
 

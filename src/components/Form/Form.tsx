@@ -4,6 +4,7 @@ import ResetIcon from '../../assets/reset.svg'
 import DownIcon from '../../assets/down.svg'
 import { UseFormReturnType } from "@mantine/form"
 import { IFormJob } from "../../pages/Jobs"
+import { useCategories } from "../../hooks/useCategories"
 
 const inputCss: CSSObject = {
   background: 'transparent', 
@@ -27,13 +28,10 @@ const inputWrapper: CSSObject = {
 
 type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob> 
 
-export const Form = ({ form }: { form: FormProps }) => { 
+
+export const Form = ({ form }: { form: FormProps }) => {
   const { classes } = useFormStyle()
-  const options = [
-    { label: "IT", value: "it" },
-    { label: "Финансы", value: "finance" },
-    { label: "Медиа", value: "media" },
-  ];
+  const options = useCategories()
     
   return (
     <form className={classes.wrapper}>

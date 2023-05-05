@@ -2,9 +2,11 @@ import { useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as authActions from '../store/root/authActions'
+import * as jobsAction from '../store/jobs/jobsAction'
 
 const allActions = {
-  ...authActions
+  ...authActions,
+  ...jobsAction
 }
 
 export const useActions = () => {

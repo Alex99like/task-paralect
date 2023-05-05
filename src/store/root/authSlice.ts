@@ -11,9 +11,7 @@ const initialState: { user: IRequestAuth | null } = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(authLogin.fulfilled, (state, { payload }) => {
       state.user = payload || null 
