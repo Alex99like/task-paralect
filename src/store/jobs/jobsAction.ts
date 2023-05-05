@@ -15,7 +15,7 @@ export const setCatagories = createAsyncThunk<Array<ICategory>>(
   }
 )
 
-export const setVacations = createAsyncThunk<IReqVacation, IFormJob>(
+export const setVacations = createAsyncThunk<IReqVacation, IFormJob & { page: number }>(
   'jobs/vacations', 
   async (form, thunkAPI) => {
     try {

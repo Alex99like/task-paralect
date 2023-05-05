@@ -15,7 +15,6 @@ export const useCategories = () => {
 
   useEffect(() => {
     setOptions(() => categories.map((el) => ({ value: `${el.key}`, label: el.title_rus })))
-    console.log(categories)
   }, [categories])
 
   return options

@@ -6,13 +6,13 @@ import { createHeaders } from '../api/url.config'
 import { ICategory, IReqVacation } from '../types/vacantion.type'
 
 export const JobsService = {
-  async getVacation({ search, filter: { industry, salary: { from, to } } }: IFormJob): Promise<IReqVacation> {
+  async getVacation({ search, filter: { industry, salary: { from, to } }, page }: IFormJob & { page: number }): Promise<IReqVacation> {
     const queryParams = {
       keyword: search,
       payment_from: from,
       payment_to: to,
       catalogues: industry,
-      page: '1',
+      page: page,
       count: '4'
     };
     
@@ -33,21 +33,3 @@ export const JobsService = {
     return data
   }
 }
-
-// export const jobsApi = createApi({
-//   reducerPath: 'jobs',
-//   baseQuery: fetchBaseQuery({ 
-//     baseUrl: 'https://startup-summer-2023-proxy.onrender.com',
-//     prepareHeaders: (headers) => {
-//       headers.set('x-secret-key', XSecretKey)
-//       headers.set('X-Api-App-Id', XApiAppId)
-//     }
-//   }),
-//   endpoints: (build) => ({
-//     getJobs: build.query<null, IFormJob>({
-//       query: ({ search, filter: { industry, salary: { from, to } } }) => ({
-//         url: `https://startup-summer-2023-proxy.onrender.com/vacancies`
-//       })
-//     })
-//   })
-// })

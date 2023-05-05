@@ -1,4 +1,4 @@
-import { Flex } from '@mantine/core'
+import { Flex, Loader } from '@mantine/core'
 import { Form } from '../components/Form/Form'
 import { Search } from '../components/Form/Search'
 import { useForm } from '@mantine/form'
@@ -20,8 +20,8 @@ export interface IFormJob {
 }
 
 export const Jobs = () => {
-  const { totalPage } = useAppSelector(state => state.jobs)
-  const { setVacations } = useActions()
+  const { totalPage, countPage, loading } = useAppSelector(state => state.jobs)
+  const { setVacations, setPage } = useActions()
 
   const form = useForm<IFormJob>({
     initialValues: {
@@ -36,19 +36,38 @@ export const Jobs = () => {
     }
   })
 
+  const change = (page: number) => {
+    setPage(page)
+    setVacations({ page: countPage, ...form.values })
+  }
+
+  const submit = () => {
+    setVacations({ page: countPage, ...form.values })
+  }
+
+  // const changePage = (page: number) => {
+  //   setPage(page)
+  // }
+
   useEffect(() => {
-    setVacations(form.values)
+    setVacations({ page: countPage, ...form.values })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   return (
     <Flex justify={'center'} columnGap={28} style={{ margin: '24px auto' }}>
-      <Form form={form} />
+      <Form form={form} submit={submit} />
       <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773 }} direction={'column'}>
         <Search form={form} />
-        <ListJobs />
-        {/* <Button onClick={() =>console.log(form.values)}>Call</Button> */}
-        <Pagination totalCount={totalPage} />
+          {!loading ? (
+            <Loader variant="bars" w={'30%'} m={'70px auto'} /> 
+          ) : (
+            <>
+              <ListJobs />
+              <Pagination totalCount={totalPage} page={countPage} change={change} />
+            </>
+          )
+        }
       </Flex>
     </Flex>
   )

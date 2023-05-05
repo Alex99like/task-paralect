@@ -2,7 +2,7 @@ import { Card, Title, Text, Box } from '@mantine/core'
 import { IVacation } from "../../types/vacantion.type"
 import { useCardStyle } from './list-jobs.type'
 
-export const CardJobs = ({ profession, currency, payment_to, payment_from, type_of_work }: IVacation) => {
+export const CardJobs = ({ profession, currency, payment_from, type_of_work }: IVacation) => {
   const { classes } = useCardStyle()
 
   return (

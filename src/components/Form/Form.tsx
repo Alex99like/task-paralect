@@ -29,7 +29,7 @@ const inputWrapper: CSSObject = {
 type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob> 
 
 
-export const Form = ({ form }: { form: FormProps }) => {
+export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) => {
   const { classes } = useFormStyle()
   const options = useCategories()
     
@@ -63,6 +63,7 @@ export const Form = ({ form }: { form: FormProps }) => {
         labelProps={{ className: classes.label }}
         rightSectionWidth={35}
         styles={{ ...controlCss }}
+        step={1000}
         rightSectionProps={{ style: { border: 'transparent' } }}
         onChange={(e) => form.setFieldValue('filter.salary.from', e)}
       />
@@ -73,6 +74,7 @@ export const Form = ({ form }: { form: FormProps }) => {
         labelProps={{ className: classes.label }}
         rightSectionWidth={35}
         styles={{ ...controlCss }}
+        step={1000}
         rightSectionProps={{ style: { border: 'transparent' } }}
         onChange={(e) => form.setFieldValue('filter.salary.to', e)}
       />
@@ -80,6 +82,7 @@ export const Form = ({ form }: { form: FormProps }) => {
       <Button
         w={'100%'}
         className={classes.button}
+        onClick={submit}
       >Применить</Button>
     </form>
   )
