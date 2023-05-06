@@ -1,10 +1,11 @@
 import { controlCss, useFormStyle } from "./form.style"
-import { Text, UnstyledButton, NumberInput, Select, Button, CSSObject, Image } from '@mantine/core'
+import { Text, UnstyledButton, NumberInput, Select, Button, CSSObject } from '@mantine/core'
 import ResetIcon from '../../assets/reset.svg'
-import DownIcon from '../../assets/down.svg'
 import { UseFormReturnType } from "@mantine/form"
 import { IFormJob } from "../../pages/Jobs"
 import { useCategories } from "../../hooks/useCategories"
+import { ArrowIcon } from "../../utils/ArrowIcon"
+import { useState } from "react"
 
 const inputCss: CSSObject = {
   background: 'transparent', 
@@ -31,6 +32,7 @@ type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob>
 
 export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) => {
   const { classes } = useFormStyle()
+  const [ activeSelect, setActiveSelect ] = useState(false)
   const options = useCategories()
     
   return (
@@ -46,7 +48,9 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
           label="Отрасль"
           placeholder="Выберете отрасль"
           data={options}
-          rightSection={<Image width={15} bg={'#fff'} src={DownIcon}  />}
+          onDropdownOpen={() => setActiveSelect(true)}
+          onDropdownClose={() => setActiveSelect(false)}
+          rightSection={<ArrowIcon active={activeSelect} />}
           rightSectionProps={{ style: inputCss }}
           w={'100%'}
           className={classes.mtOne}

@@ -1,9 +1,8 @@
 import { Flex } from '@mantine/core'
 import { CardJobs } from './CardJobs'
-import { useAppSelector } from '../../hooks/useAppSelector'
+import { IVacation } from '../../types/vacantion.type'
 
-export const ListJobs = () => {
-  const { vacations } = useAppSelector(state => state.jobs)
+export const ListJobs = ({ vacations }: { vacations: IVacation[] }) => {
   
   return (
     <Flex w={'100%'} direction={'column'} gap={16} mt={16}>

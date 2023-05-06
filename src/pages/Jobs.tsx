@@ -16,7 +16,7 @@ export interface IFormJob {
 }
 
 export const Jobs = () => {
-  const { totalPage, countPage, loading, form: formValues } = useAppSelector(state => state.jobs)
+  const { totalPage, countPage, loading, form: formValues, vacations } = useAppSelector(state => state.jobs)
   const { setVacations, setPage, setFormValues } = useActions()
 
   const form = useForm<IFormJob>({
@@ -47,7 +47,7 @@ export const Jobs = () => {
             <Loader variant="bars" w={'30%'} m={'70px auto'} /> 
           ) : (
             <>
-              <ListJobs />
+              <ListJobs vacations={vacations} />
               <Pagination totalCount={totalPage} page={countPage} change={change} />
             </>
           )

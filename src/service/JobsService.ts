@@ -3,11 +3,11 @@ import { catalogues, vacations } from '../api/consts'
 import queryString from 'query-string'
 import axios from 'axios'
 import { createHeaders } from '../api/url.config'
-import { ICategory, IReqVacation } from '../types/vacantion.type'
+import { ICategory, IReqVacation, IVacation } from '../types/vacantion.type'
 
 export const JobsService = {
   async getVacation({ search, industry, from, to, page }: IFormJob & { page: number }): Promise<IReqVacation> {
-    console.log(industry)
+
     const queryParams = {
       keyword: search,
       payment_from: from,
@@ -25,6 +25,14 @@ export const JobsService = {
     return data 
   },
   
+  async getVacationId(id: string) {
+    const { data } = await axios.get<IVacation>(`${vacations}/${id}`, {
+      ...createHeaders(),
+    })
+
+    return data
+  },
+
   async getCategories(): Promise<Array<ICategory>> {
     const { data } = await axios.get<Array<ICategory>>(`${catalogues}`, {
       ...createHeaders()

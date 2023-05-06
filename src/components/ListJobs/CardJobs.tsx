@@ -13,9 +13,8 @@ export const CardJobs = (vacation: IVacation) => {
   const { classes } = useCardStyle()
   const { favorites } = useAppSelector(state => state.jobs)
   const { addFavorites, removeFavorites } = useActions()
-
+  
   const changeFav = () => {
-    console.log(favorites)
     if (favorites.find((el) => el.id === id)) return removeFavorites(vacation)
     else return addFavorites(vacation)
   }
@@ -28,7 +27,8 @@ export const CardJobs = (vacation: IVacation) => {
     >
       <Flex justify={'space-between'}>
         <Link
-          to={`vacation/${id}`}
+          state={vacation}
+          to={`/vacation/${id}`}
           className={classes.title}
         >{profession} </Link>
         <StarIcon addFav={changeFav} active={!!favorites.find(el => id === el.id)} />
