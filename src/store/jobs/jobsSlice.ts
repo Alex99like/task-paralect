@@ -11,6 +11,7 @@ interface IInitialState {
   loading: boolean
   totalPage: number
   countPage: number
+  favoritePage: number
 }
 
 const initialState: IInitialState = {
@@ -25,7 +26,8 @@ const initialState: IInitialState = {
   },
   loading: false,
   totalPage: 1,
-  countPage: 1
+  countPage: 1,
+  favoritePage: 1
 }
 
 export const jobsSlice = createSlice({
@@ -37,6 +39,9 @@ export const jobsSlice = createSlice({
     },
     setPage(state, { payload }: { payload: number }) {
       state.countPage = payload
+    },
+    setFavoritePage(state, { payload }: { payload: number }) {
+      state.favoritePage = payload
     },
     addFavorites(state, { payload }: { payload: IVacation }) {
       state.favorites.push(payload)
