@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout/Layout";
 import { Jobs } from "../pages/Jobs";
 import { Favorites } from "../pages/Favorites";
 import { NotFound } from "../pages/NotFound";
+import { Vacation } from "../pages/Vacation";
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
         {
           path: "/",
           element: <Jobs />,
+        },
+        {
+          path: "vacation/:id",
+          element: <Vacation />,
         },
         {
           path: "favorites",

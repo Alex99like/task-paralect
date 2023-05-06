@@ -64,6 +64,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         rightSectionWidth={35}
         styles={{ ...controlCss }}
         step={1000}
+        min={0}
         rightSectionProps={{ style: { border: 'transparent' } }}
         onChange={(e) => form.setFieldValue('filter.salary.from', e)}
       />
@@ -75,6 +76,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         rightSectionWidth={35}
         styles={{ ...controlCss }}
         step={1000}
+        min={form.values.filter.salary.from}
         rightSectionProps={{ style: { border: 'transparent' } }}
         onChange={(e) => form.setFieldValue('filter.salary.to', e)}
       />

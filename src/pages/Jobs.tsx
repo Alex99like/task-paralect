@@ -45,10 +45,6 @@ export const Jobs = () => {
     setVacations({ page: countPage, ...form.values })
   }
 
-  // const changePage = (page: number) => {
-  //   setPage(page)
-  // }
-
   useEffect(() => {
     setVacations({ page: countPage, ...form.values })
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -58,7 +54,7 @@ export const Jobs = () => {
     <Flex justify={'center'} columnGap={28} style={{ margin: '24px auto' }}>
       <Form form={form} submit={submit} />
       <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773 }} direction={'column'}>
-        <Search form={form} />
+        <Search form={form} submit={submit} />
           {!loading ? (
             <Loader variant="bars" w={'30%'} m={'70px auto'} /> 
           ) : (

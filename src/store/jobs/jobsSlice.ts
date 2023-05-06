@@ -47,7 +47,7 @@ export const jobsSlice = createSlice({
     }) 
     builder.addCase(setVacations.fulfilled, (state, { payload }) => {
       state.vacations = payload.objects
-      state.totalPage = payload.total
+      state.totalPage = payload.total / 4
       state.loading = true
     }) 
   }

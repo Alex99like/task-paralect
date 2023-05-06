@@ -7,6 +7,7 @@ export interface ICategory {
 }
 
 export interface IVacation {
+  id: number
   profession: string
   firm_name: string 
   town: {

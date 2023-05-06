@@ -19,7 +19,7 @@ export const AuthService = {
       },
       body: JSON.stringify(body)
     }) 
-
+    
     return await res.json()
   },
 

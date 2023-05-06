@@ -6,13 +6,12 @@ import { IFormJob } from "../../pages/Jobs"
 
 type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob> 
 
-export const Search = ({ form }: { form: FormProps }) => {
+export const Search = ({ form, submit }: { form: FormProps, submit: () => void }) => {
     const { classes } = useSearchStyle()
 
     return (
         <TextInput
           classNames={{
-            
             input: classes.wrapper,
             icon: classes.icon
           }}
@@ -22,11 +21,10 @@ export const Search = ({ form }: { form: FormProps }) => {
           iconWidth={35}
           style={{ minWidth: 320, width: "100%", maxWidth: 773 }}
           rightSection={
-            <Button className={classes.button}>Поиск</Button>
+            <Button onClick={submit} className={classes.button}>Поиск</Button>
           }
           placeholder="Введите название вакансии"
           rightSectionWidth={106}
-          
         />
     )
 }

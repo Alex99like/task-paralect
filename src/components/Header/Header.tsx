@@ -33,9 +33,6 @@ export const HeaderWrapper = () => {
           >Избранное
           </Link>
         </Group>
-      {/* </Flex> */}
-      
-      {/* <Logo /> */}
       
     </Header>
   )
