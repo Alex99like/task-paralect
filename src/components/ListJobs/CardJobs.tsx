@@ -5,9 +5,20 @@ import { CustomIcon } from '../../utils/CustomIcon'
 import { Link } from 'react-router-dom'
 import { parseSalary } from '../../utils/string'
 import { StarIcon } from '../../utils/StarIcon'
+import { useActions } from '../../hooks/useActions'
+import { useAppSelector } from '../../hooks/useAppSelector'
 
-export const CardJobs = ({ profession, id, currency, payment_from, payment_to, town, type_of_work }: IVacation) => {
+export const CardJobs = (vacation: IVacation) => {
+  const { profession, id, currency, payment_from, payment_to, town, type_of_work } = vacation
   const { classes } = useCardStyle()
+  const { favorites } = useAppSelector(state => state.jobs)
+  const { addFavorites, removeFavorites } = useActions()
+
+  const changeFav = () => {
+    console.log(favorites)
+    if (favorites.find((el) => el.id === id)) return removeFavorites(vacation)
+    else return addFavorites(vacation)
+  }
 
   return (
     <Card
@@ -20,7 +31,7 @@ export const CardJobs = ({ profession, id, currency, payment_from, payment_to, t
           to={`vacation/${id}`}
           className={classes.title}
         >{profession} </Link>
-        <StarIcon active={false} />
+        <StarIcon addFav={changeFav} active={!!favorites.find(el => id === el.id)} />
       </Flex>
       <Box display={'flex'} style={{ gap: 12, color: '#7B7C88' }} mt={8}>
         <Text className={classes.price}>{parseSalary(payment_from, payment_to, currency)}</Text>

@@ -23,6 +23,7 @@ export const Search = ({ form, submit }: { form: FormProps, submit: () => void }
           rightSection={
             <Button onClick={submit} className={classes.button}>Поиск</Button>
           }
+          value={form.values.search}
           placeholder="Введите название вакансии"
           rightSectionWidth={106}
         />

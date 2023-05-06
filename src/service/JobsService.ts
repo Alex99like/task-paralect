@@ -17,7 +17,6 @@ export const JobsService = {
     };
     
     const queryStringified = queryString.stringify(queryParams);
-    // console.log(getLocalStorage('user'))
     const { data } = await axios.get<IReqVacation>(`${vacations}?/${queryStringified}`, {
       ...createHeaders(),
     })

@@ -20,20 +20,11 @@ export interface IFormJob {
 }
 
 export const Jobs = () => {
-  const { totalPage, countPage, loading } = useAppSelector(state => state.jobs)
-  const { setVacations, setPage } = useActions()
-
+  const { totalPage, countPage, loading, form: formValues } = useAppSelector(state => state.jobs)
+  const { setVacations, setPage, setFormValues } = useActions()
+  console.log(formValues)
   const form = useForm<IFormJob>({
-    initialValues: {
-      search: '',
-      filter: {
-        industry: '',
-        salary: {
-          from: 0,
-          to: 0
-        }
-      }
-    }
+    initialValues: formValues,
   })
 
   const change = (page: number) => {
@@ -42,6 +33,7 @@ export const Jobs = () => {
   }
 
   const submit = () => {
+    setFormValues(form.values)
     setVacations({ page: countPage, ...form.values })
   }
 
