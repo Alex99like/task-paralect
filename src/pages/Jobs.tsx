@@ -10,21 +10,17 @@ import { Pagination } from '../components/Pagination/Pagination';
 
 export interface IFormJob {
   search: string;
-  filter: {
-    industry: string | null;
-    salary: {
-      from: number;
-      to: number;
-    };
-  };
+  industry: string | null;
+  from: number | undefined | '';
+  to: number | undefined | '';
 }
 
 export const Jobs = () => {
   const { totalPage, countPage, loading, form: formValues } = useAppSelector(state => state.jobs)
   const { setVacations, setPage, setFormValues } = useActions()
-  console.log(formValues)
+
   const form = useForm<IFormJob>({
-    initialValues: formValues,
+    initialValues: { ...formValues }
   })
 
   const change = (page: number) => {
@@ -33,7 +29,7 @@ export const Jobs = () => {
   }
 
   const submit = () => {
-    setFormValues(form.values)
+    setFormValues({ ...form.values })
     setVacations({ page: countPage, ...form.values })
   }
 

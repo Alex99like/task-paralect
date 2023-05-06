@@ -19,13 +19,9 @@ const initialState: IInitialState = {
   favorites: [],
   form: {
     search: '',
-      filter: {
-        industry: '',
-        salary: {
-          from: 0,
-          to: 0
-        }
-      }
+    industry: '',
+    from: '',
+    to: ''
   },
   loading: false,
   totalPage: 1,

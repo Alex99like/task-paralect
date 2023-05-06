@@ -1,5 +1,5 @@
 import { controlCss, useFormStyle } from "./form.style"
-import { Text, UnstyledButton, NumberInput, Select, Button, CSSObject } from '@mantine/core'
+import { Text, UnstyledButton, NumberInput, Select, Button, CSSObject, Image } from '@mantine/core'
 import ResetIcon from '../../assets/reset.svg'
 import DownIcon from '../../assets/down.svg'
 import { UseFormReturnType } from "@mantine/form"
@@ -46,13 +46,14 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
           label="Отрасль"
           placeholder="Выберете отрасль"
           data={options}
-          rightSection={<img src={DownIcon} />}
+          rightSection={<Image width={15} bg={'#fff'} src={DownIcon}  />}
           rightSectionProps={{ style: inputCss }}
           w={'100%'}
           className={classes.mtOne}
           labelProps={{ className: classes.label }}
           styles={{input: inputWrapper }}
-          onChange={(e) => form.setFieldValue('filter.industry', e)}
+          value={form.values.industry}
+          onChange={(e) => form.setFieldValue('industry', e)}
       />
 
       <NumberInput
@@ -65,9 +66,9 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         styles={{ ...controlCss }}
         step={1000}
         min={0}
-        //value={form.values.filter.salary.from}
-        rightSectionProps={{ style: { border: 'transparent' } }}
-        onChange={(e) => form.setFieldValue('filter.salary.from', e)}
+        value={form.values.from}
+        rightSectionProps={{ style: { border: '#fff' } }}
+        onChange={(e) => form.setFieldValue('from', e)}
       />
       <NumberInput
         variant="default"
@@ -77,10 +78,9 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         rightSectionWidth={35}
         styles={{ ...controlCss }}
         step={1000}
-        min={form.values.filter.salary.from}
-        //value={form.values.filter.salary.to}
-        rightSectionProps={{ style: { border: 'transparent' } }}
-        onChange={(e) => form.setFieldValue('filter.salary.to', e)}
+        value={form.values.to}
+        rightSectionProps={{ style: { border: '#fff' } }}
+        onChange={(e) => form.setFieldValue('to', e)}
       />
 
       <Button

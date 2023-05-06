@@ -6,12 +6,13 @@ import { createHeaders } from '../api/url.config'
 import { ICategory, IReqVacation } from '../types/vacantion.type'
 
 export const JobsService = {
-  async getVacation({ search, filter: { industry, salary: { from, to } }, page }: IFormJob & { page: number }): Promise<IReqVacation> {
+  async getVacation({ search, industry, from, to, page }: IFormJob & { page: number }): Promise<IReqVacation> {
+    console.log(industry)
     const queryParams = {
       keyword: search,
       payment_from: from,
       payment_to: to,
-      catalogues: industry,
+      catalogues: industry?.valueOf(),
       page: page,
       count: '4'
     };
