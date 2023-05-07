@@ -7,16 +7,15 @@ import { ICategory, IReqVacation, IVacation } from '../types/vacantion.type'
 
 export const JobsService = {
   async getVacation({ search, industry, from, to, page }: IFormJob & { page: number }): Promise<IReqVacation> {
-
     const queryParams = {
       keyword: search,
       payment_from: from,
       payment_to: to,
-      catalogues: industry?.valueOf(),
+      catalogues: industry && +industry,
       page: page,
-      count: '4'
+      count: 4
     };
-    
+ 
     const queryStringified = queryString.stringify(queryParams);
     const { data } = await axios.get<IReqVacation>(`${vacations}?/${queryStringified}`, {
       ...createHeaders(),

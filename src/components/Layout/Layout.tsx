@@ -21,7 +21,7 @@ export const Layout = () => {
       header={<Header />}
       styles={{
         root: { padding: 0 },
-        main: { backgroundColor: '#F5F5F5' }
+        main: { backgroundColor: '#F5F5F5', paddingLeft: 0, paddingRight: 0 }
       }}
     >  
       <Outlet />

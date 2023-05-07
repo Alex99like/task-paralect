@@ -1,4 +1,4 @@
-import { Card, Text, Box, Flex } from '@mantine/core'
+import { Card, Text, Box, Title, Flex } from '@mantine/core'
 import { IVacation } from "../../types/vacantion.type"
 import { useCardStyle } from './list-jobs.type'
 import { CustomIcon } from '../../utils/CustomIcon'
@@ -8,9 +8,11 @@ import { StarIcon } from '../../utils/StarIcon'
 import { useActions } from '../../hooks/useActions'
 import { useAppSelector } from '../../hooks/useAppSelector'
 
-export const CardJobs = (vacation: IVacation) => {
+export const CardJobs = ({ vacation, variant }: { vacation: IVacation, variant: 'vacation' | 'standard' }) => {
   const { profession, id, currency, payment_from, payment_to, town, type_of_work } = vacation
-  const { classes } = useCardStyle()
+  
+  const { classes, cx } = useCardStyle()
+
   const { favorites } = useAppSelector(state => state.jobs)
   const { addFavorites, removeFavorites } = useActions()
   
@@ -19,26 +21,61 @@ export const CardJobs = (vacation: IVacation) => {
     else return addFavorites(vacation)
   }
 
-  return (
-    <Card
-      pt={20}
-      pl={22}
-      className={classes.wrapper} 
-    >
-      <Flex justify={'space-between'}>
+  const title = (vac: string) => {
+    if (vac === 'standard') {
+      return (
         <Link
           state={vacation}
           to={`/vacation/${id}`}
           className={classes.title}
         >{profession} </Link>
+      )
+    } else {
+      return (
+        <Title className={classes.titleVacation}>{profession} </Title>
+      )
+    }
+  }
+
+  return (
+    <Card
+      pt={variant === 'standard' ? 20 : 22}
+      pl={22}
+      className={cx({
+        [classes.wrapper]: variant === 'standard',
+        [classes.wrapperVacation]: variant === 'vacation' 
+      })} 
+    >
+      <Flex justify={'space-between'}>
+        {title(variant)}
         <StarIcon addFav={changeFav} active={!!favorites.find(el => id === el.id)} />
       </Flex>
-      <Box display={'flex'} style={{ gap: 12, color: '#7B7C88' }} mt={8}>
-        <Text className={classes.price}>{parseSalary(payment_from, payment_to, currency)}</Text>
+      <Box className={cx({
+        [classes.boxWrap]: variant === 'standard',
+        [classes.boxWrapVacation]: variant === 'vacation'
+      })}>
+        <Text 
+          className={cx({ 
+            [classes.price]: variant === 'standard',
+            [classes.priceVacation]: variant === 'vacation' 
+          })}
+        >{parseSalary(payment_from, payment_to, currency)}
+        </Text>
         •
-        <Text className={classes.typeWork}>{type_of_work.title}</Text>
+        <Text 
+          className={cx({
+            [classes.typeWork]: variant === 'standard',
+            [classes.typeWorkVacation]: variant === 'vacation'
+          })}
+        >{type_of_work.title}
+        </Text>
       </Box>
-      <Box display={'flex'} style={{ gap: 10 }} mt={8}>
+      <Box 
+        display={'flex'} 
+        style={{ gap: 8, alignItems: 'center' }} 
+        ml={1} 
+        mt={variant === 'standard' ? 8 : 10}
+      >
         <CustomIcon name='location' width={20} height={20} />
         <Text className={classes.description}>{town.title}</Text>
       </Box>

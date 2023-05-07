@@ -30,7 +30,7 @@ export const Vacation = () => {
 
   return (
     <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773, margin: '24px auto' }} direction={'column'}>
-      {vac && <CardJobs {...vac} />}
+      {vac && <CardJobs vacation={vac} variant="vacation" />}
       {vac && <Description html={vac.vacancyRichText} />}
     </Flex>
   )

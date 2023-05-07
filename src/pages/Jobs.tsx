@@ -25,7 +25,7 @@ export const Jobs = () => {
 
   const change = (page: number) => {
     setPage(page)
-    setVacations({ page: countPage, ...form.values })
+    setVacations({ page: page, ...form.values })
   }
 
   const submit = () => {
