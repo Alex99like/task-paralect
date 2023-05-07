@@ -7,7 +7,10 @@ export const useNoDataStyle = createStyles(() => ({
     fontSize: 24,
     alignItems: 'center',
     color: '#343A40',
-    marginTop: 28
+    marginTop: 28,
+    '@media (max-width: 380px)': {
+      fontSize: 20
+    },
   },
 
   link: {

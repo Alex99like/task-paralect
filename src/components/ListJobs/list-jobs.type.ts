@@ -16,18 +16,26 @@ export const useCardStyle = createStyles(() => ({
   },
 
   boxWrap: {
-    gap: 12, 
+   columnGap: 12, 
     marginTop: 8,
     display: 'flex',
-    color: '#7B7C88'
+    color: '#7B7C88',
+    '@media (max-width: 520px)': {
+      flexDirection: 'column'
+    },
   },
 
   boxWrapVacation: {
-    gap: 13, 
+    columnGap: 13, 
     display: 'flex',
     alignItems: 'center',
     marginTop: 10,
-    color: '#7B7C88'
+    color: '#7B7C88',
+
+    '@media (max-width: 520px)': {
+      flexDirection: 'column',
+      alignItems: 'flex-start'
+    },
   },
 
   star: {
@@ -46,14 +54,22 @@ export const useCardStyle = createStyles(() => ({
     fontWeight: 600,
     fontSize: 20,
     color: '#5E96FC',
-    fontFamily: 'Inter'
+    fontFamily: 'Inter',
+
+    '@media (max-width: 520px)': {
+      fontSize: 18
+    },
   },
 
   titleVacation: {
     fontFamily: 'Inter',
     fontWeight: 700,
     fontSize: 28,
-    color: '#232134'
+    color: '#232134',
+
+    '@media (max-width: 520px)': {
+      fontSize: 18
+    },
   },
 
   description: {
@@ -88,5 +104,11 @@ export const useCardStyle = createStyles(() => ({
     fontWeight: 400,
     fontSize: 20,
     color: '#232134',
+  },
+
+  dot: {
+    '@media (max-width: 520px)': {
+      display: 'none'
+    },
   }
 }))

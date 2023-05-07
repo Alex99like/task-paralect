@@ -57,7 +57,12 @@ export const useFormStyle = createStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+
+    '@media (max-width: 720px)': {
+      width: '100%',
+      marginBottom: 20,
+    },
   },
 
   button: {

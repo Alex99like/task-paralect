@@ -61,7 +61,7 @@ export const CardJobs = ({ vacation, variant }: { vacation: IVacation, variant: 
           })}
         >{parseSalary(payment_from, payment_to, currency)}
         </Text>
-        •
+        <span className={classes.dot}>•</span>
         <Text 
           className={cx({
             [classes.typeWork]: variant === 'standard',

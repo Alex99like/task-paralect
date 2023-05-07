@@ -5,6 +5,7 @@ const useStarStyle = createStyles((theme) => ({
     position: 'relative',
     right: 9,
     top: 4,
+    minWidth: 20,
     cursor: 'pointer',
 
     ':hover': {

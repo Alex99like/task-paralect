@@ -7,6 +7,7 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import { useActions } from '../hooks/useActions';
 import { useEffect } from 'react';
 import { Pagination } from '../components/Pagination/Pagination';
+import { useStyleJobs } from './jobs.style';
 
 export interface IFormJob {
   search: string;
@@ -17,7 +18,9 @@ export interface IFormJob {
 
 export const Jobs = () => {
   const { totalPage, countPage, loading, form: formValues, vacations } = useAppSelector(state => state.jobs)
+  
   const { setVacations, setPage, setFormValues } = useActions()
+  const { classes } = useStyleJobs()
 
   const form = useForm<IFormJob>({
     initialValues: { ...formValues }
@@ -39,7 +42,7 @@ export const Jobs = () => {
   }, [])
   
   return (
-    <Flex justify={'center'} columnGap={28} style={{ margin: '24px auto' }}>
+    <Flex className={classes.wrapper} justify={'center'} columnGap={28} style={{ margin: '24px auto' }}>
       <Form form={form} submit={submit} />
       <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773 }} direction={'column'}>
         <Search form={form} submit={submit} />
