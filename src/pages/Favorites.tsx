@@ -1,5 +1,5 @@
 import { Flex } from "@mantine/core"
-import { ListJobs } from "../components/ListJobs/ListJons"
+import { ListJobs } from "../components/ListJobs/ListJobs"
 import { useAppSelector } from "../hooks/useAppSelector"
 import { Pagination } from "../components/Pagination/Pagination"
 import { useActions } from "../hooks/useActions"

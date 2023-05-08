@@ -18,7 +18,6 @@ export const HeaderWrapper = () => {
       className={classes.header}
     >  
         <Flex 
-          // direction={'column'}
           className={classes.wrapper}
           h={'100%'}
         >

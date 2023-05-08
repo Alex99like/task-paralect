@@ -45,7 +45,7 @@ export const useCardStyle = createStyles((theme) => ({
     right: 20,
     top: 20,
     cursor: 'pointer',
-    stroke: theme.colors.blue,
+    stroke: theme.colors.bluePrimary,
   },
 
   title: {
@@ -53,7 +53,7 @@ export const useCardStyle = createStyles((theme) => ({
     maxWidth: 'calc(100% - 40px)',
     fontWeight: 600,
     fontSize: 20,
-    color: theme.colors.blue,
+    color: theme.colors.bluePrimary,
     fontFamily: 'Inter',
 
     '@media (max-width: 520px)': {

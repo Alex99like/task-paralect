@@ -1,4 +1,4 @@
-import { useDescriptionStyle } from './description.type'
+import { useDescriptionStyle } from './description.style'
 import { TypographyStylesProvider } from '@mantine/core'
 
 export const Description = ({ html }: { html: string }) => {

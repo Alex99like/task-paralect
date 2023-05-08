@@ -6,34 +6,41 @@ import { useCategories } from "../../hooks/useCategories"
 import { ArrowIcon } from "../shared/ArrowIcon"
 import { useState } from "react"
 import { ButtonReset } from "../shared/ButtonReset"
+import { useActions } from "../../hooks/useActions"
 
 type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob> 
 
 export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) => {
   const { classes } = useFormStyle()
+  const { reset } = useActions()
+
+  const handlerReset = () => {
+    reset()
+    form.reset()
+  }
+
   const [ activeSelect, setActiveSelect ] = useState(false)
   const options = useCategories()
     
   return (
     <form className={classes.wrapper}>
       <Text className={classes.text}>Фильтры</Text>
-        <ButtonReset />
+        <ButtonReset reset={handlerReset} />
         <Select
-          defaultChecked={true}
           label="Отрасль"
           placeholder="Выберете отрасль"
-          data={options}
           onDropdownOpen={() => setActiveSelect(true)}
           onDropdownClose={() => setActiveSelect(false)}
           rightSection={<ArrowIcon active={activeSelect} />}
-          rightSectionProps={{ className: classes.inputCss }}
           rightSectionWidth={47}
           w={'100%'}
-          classNames={{ root: classes.mtOne, input: classes.inputWrapper }}
+          styles={{ rightSection: { pointerEvents: 'none' } }}
           labelProps={{ className: classes.label }}
           value={form.values.industry}
           onChange={(e) => form.setFieldValue('industry', e)}
-      />
+          classNames={{ root: classes.mtOne, input: classes.inputWrapper }}
+          data={options}
+        />
 
       <NumberInput
         label={'Оклад'}
@@ -45,7 +52,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         styles={{ ...controlCss }}
         step={1000}
         min={0}
-        value={form.values.from}
+        value={form.values.from || ''}
         onChange={(e) => form.setFieldValue('from', e)}
       />
       <NumberInput
@@ -56,7 +63,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         styles={{ ...controlCss, wrapper: { marginBottom: 4 } }}
         min={form.values.from || 0}
         step={1000}
-        value={form.values.to}
+        value={form.values.to || ''}
         onChange={(e) => form.setFieldValue('to', e)}
       />
 

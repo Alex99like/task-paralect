@@ -2,8 +2,9 @@ import { createStyles } from '@mantine/core'
 
 export const useSearchStyle = createStyles((theme) => ({
   root: {
-    
-    
+    minWidth: 320, 
+    width: "100%", 
+    maxWidth: 773
   },
   wrapper: {
     minWidth: 320, 
@@ -30,7 +31,7 @@ export const useSearchStyle = createStyles((theme) => ({
     marginRight: 4,
     //padding: '10px 20px',
     height: 32,
-    background: theme.colors.blue,
+    background: theme.colors.bluePrimary,
     borderRadius: 8,
     fontWeight: 400,
 

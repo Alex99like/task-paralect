@@ -1,6 +1,6 @@
 import { Card, Text, Box, Title, Flex } from '@mantine/core'
 import { IVacation } from "../../types/vacantion.type"
-import { useCardStyle } from './list-jobs.type'
+import { useCardStyle } from './list-jobs.style'
 import { CustomIcon } from '../shared/CustomIcon'
 import { Link } from 'react-router-dom'
 import { parseSalary } from '../../utils/string'

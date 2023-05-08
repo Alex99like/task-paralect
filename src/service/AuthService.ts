@@ -1,5 +1,4 @@
 import { IRequestAuth, IResponseAuth } from "../store/root/types"
-import { getLocalStorage } from "../utils/localStorage"
 
 export const AuthService = {
   async login(): Promise<IRequestAuth> {
@@ -22,9 +21,4 @@ export const AuthService = {
     
     return await res.json()
   },
-
-  refreshToken() {
-    const user = getLocalStorage('user')
-    user?.access_token
-  }
 }

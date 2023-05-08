@@ -21,7 +21,6 @@ function App() {
         
         colors: {
           bluePrimary: ['#5E96FC'],
-          blue: ['#5E96FC'],
           blueHover: ['#3B7CD3'],
           blueActive: ['#92C1FF'],
           blackPrimary: ['#232134'],

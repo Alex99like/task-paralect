@@ -35,11 +35,12 @@ const useButtonStyle = createStyles(() => ({
   },
 }))
 
-export const ButtonReset = () => {
+export const ButtonReset = ({ reset }: { reset: () => void  }) => {
   const { classes } = useButtonStyle()
   
   return (
     <UnstyledButton 
+      onClick={() => reset()}
       className={classes.wrapper}
     >
       Сбросить все

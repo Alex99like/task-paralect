@@ -7,5 +7,10 @@ export const useDescriptionStyle = createStyles((theme) => ({
     padding: '20px 40px',
     border: `1px solid ${theme.colors.gray}`,
     borderRadius: 12,
+
+    '@media (max-width: 400px)': {
+      fontSize: 18,
+      padding: '20px 20px',
+    },
   }
 }))

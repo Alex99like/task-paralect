@@ -1,5 +1,5 @@
 import { IFormJob } from '../pages/Jobs'
-import { catalogues, vacations } from '../api/consts'
+import { catalogues, countItemOnPage, vacations } from '../api/consts'
 import queryString from 'query-string'
 import axios from 'axios'
 import { createHeaders } from '../api/url.config'
@@ -14,7 +14,7 @@ export const JobsService = {
       payment_from: from,
       payment_to: to,
       page: page,
-      count: 4
+      count: countItemOnPage
     };
  
     const queryStringify = queryString.stringify(queryParams);

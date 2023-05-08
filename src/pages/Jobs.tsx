@@ -2,7 +2,7 @@ import { Flex, Loader } from '@mantine/core'
 import { Form } from '../components/Form/Form'
 import { Search } from '../components/Form/Search'
 import { useForm } from '@mantine/form'
-import { ListJobs } from '../components/ListJobs/ListJons';
+import { ListJobs } from '../components/ListJobs/ListJobs';
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useActions } from '../hooks/useActions';
 import { useEffect } from 'react';
@@ -32,6 +32,7 @@ export const Jobs = () => {
   }
 
   const submit = () => {
+    setPage(1)
     setFormValues({ ...form.values })
     setVacations({ page: countPage, ...form.values })
   }

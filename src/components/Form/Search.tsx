@@ -12,13 +12,13 @@ export const Search = ({ form, submit }: { form: FormProps, submit: () => void }
     return (
         <TextInput
           classNames={{
+            root: classes.root,
             input: classes.wrapper,
             icon: classes.icon
           }}
           onChange={(e) => form.setFieldValue('search', e.target.value)}
           icon={<Image style={{ width: 16 }} src={SearchIcon} />}
           iconWidth={35}
-          style={{ minWidth: 320, width: "100%", maxWidth: 773 }}
           rightSection={
             <Button onClick={submit} className={classes.button}>Поиск</Button>
           }

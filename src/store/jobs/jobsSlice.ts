@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { setCatagories, setVacations } from "./jobsAction";
 import { ICategory, IVacation } from "../../types/vacantion.type";
 import { IFormJob } from "../../pages/Jobs";
+import { keyStorageFavorites } from "../../api/consts";
+import { getLocalStorage } from "../../utils/localStorage";
 
 interface IInitialState {
   categories: Array<ICategory>
@@ -14,16 +16,18 @@ interface IInitialState {
   favoritePage: number
 }
 
+const initialFormValues = {
+  search: '',
+  industry: '',
+  from: undefined,
+  to: undefined
+}
+
 const initialState: IInitialState = {
   categories: [],
   vacations: [],
-  favorites: [],
-  form: {
-    search: '',
-    industry: '',
-    from: '',
-    to: ''
-  },
+  favorites: getLocalStorage(keyStorageFavorites) || [],
+  form: { ...initialFormValues },
   loading: false,
   totalPage: 1,
   countPage: 1,
@@ -45,10 +49,14 @@ export const jobsSlice = createSlice({
     },
     addFavorites(state, { payload }: { payload: IVacation }) {
       state.favorites.push(payload)
+      localStorage.setItem(keyStorageFavorites, JSON.stringify(state.favorites))
     },
     removeFavorites(state, { payload }: { payload: IVacation }) {
       state.favorites = state.favorites.filter(el => el.id !== payload.id)
     },
+    reset(state) {
+      state.form = { ...initialFormValues }
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(setCatagories.fulfilled, (state, { payload }) => {
