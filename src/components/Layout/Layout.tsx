@@ -6,8 +6,9 @@ import { useActions } from "../../hooks/useActions"
 import { useEffect } from "react"
 import { useAppSelector } from "../../hooks/useAppSelector"
 import { keyStorageUser } from "../../api/consts"
+import { PropsWithChildren } from 'react'
 
-export const Layout = () => {
+export const Layout = ({ children }: PropsWithChildren) => {
   const { classes } = useFormStyle()
   const { authLogin } = useActions()
   const { user } = useAppSelector(state => state.root)
@@ -24,6 +25,7 @@ export const Layout = () => {
       header={<Header />}
       classNames={{ main: classes.main, root: classes.root }}
     >  
+      {children}
       <Outlet />
     </AppShell>
   )

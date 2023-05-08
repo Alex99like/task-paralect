@@ -12,11 +12,12 @@ type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob>
 
 export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) => {
   const { classes } = useFormStyle()
-  const { reset, setVacations } = useActions()
+  const { reset, setVacations, setPage } = useActions()
 
   const handlerReset = () => {
     reset()
     form.reset()
+    setPage(1)
     setVacations({ ...form.values, page: 1 })
   }
 
@@ -28,6 +29,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
       <Text className={classes.text}>Фильтры</Text>
         <ButtonReset reset={handlerReset} />
         <Select
+          data-elem="industry-select"
           label="Отрасль"
           placeholder="Выберете отрасль"
           onDropdownOpen={() => setActiveSelect(true)}
@@ -44,6 +46,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         />
 
       <NumberInput
+        data-elem="salary-from-input"
         label={'Оклад'}
         placeholder="От"
         w={'100%'}
@@ -57,6 +60,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         onChange={(e) => form.setFieldValue('from', e)}
       />
       <NumberInput
+        data-elem="salary-to-input"
         variant="default"
         w={'100%'}
         placeholder="До"
@@ -69,6 +73,7 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
       />
 
       <Button
+        data-elem="search-button"
         w={'100%'}
         className={classes.button}
         onClick={submit}

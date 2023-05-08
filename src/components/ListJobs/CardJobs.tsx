@@ -39,6 +39,7 @@ export const CardJobs = ({ vacation, variant }: { vacation: IVacation, variant: 
 
   return (
     <Card
+      data-elem={`vacancy-${id}`}
       pt={variant === 'standard' ? 20 : 22}
       pl={22}
       className={cx({
@@ -48,7 +49,12 @@ export const CardJobs = ({ vacation, variant }: { vacation: IVacation, variant: 
     >
       <Flex justify={'space-between'}>
         {title(variant)}
-        <StarIcon addFav={changeFav} active={!!favorites.find(el => id === el.id)} />
+        <></>
+        <StarIcon 
+          data-elem={`vacancy-${id}-shortlist-button`}
+          addFav={changeFav} 
+          active={!!favorites.find(el => id === el.id)} 
+        />
       </Flex>
       <Box className={cx({
         [classes.boxWrap]: variant === 'standard',

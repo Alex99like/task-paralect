@@ -31,7 +31,6 @@ export const JobsService = {
       ...createHeaders(),
     })
     
-    console.log(data)
     return 'id' in data ? data : null
   },
 

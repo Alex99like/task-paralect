@@ -11,6 +11,7 @@ export const Search = ({ form, submit }: { form: FormProps, submit: () => void }
 
     return (
         <TextInput
+          data-elem="search-input"
           classNames={{
             root: classes.root,
             input: classes.wrapper,
@@ -20,7 +21,7 @@ export const Search = ({ form, submit }: { form: FormProps, submit: () => void }
           icon={<Image style={{ width: 16 }} src={SearchIcon} />}
           iconWidth={35}
           rightSection={
-            <Button onClick={submit} className={classes.button}>Поиск</Button>
+            <Button data-elem="search-button" onClick={submit} className={classes.button}>Поиск</Button>
           }
           value={form.values.search}
           placeholder="Введите название вакансии"

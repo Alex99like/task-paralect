@@ -6,8 +6,8 @@ import { useEffect, useState } from "react"
 import { JobsService } from "../service/JobsService"
 import { IVacation } from "../types/vacantion.type"
 import { useLocation } from 'react-router-dom'
-import { NotFound } from "./NotFound"
 import { useStyleVacation } from "./pages.style"
+import { NoData } from "../components/NoData/NoData"
 
 export const Vacation = () => {
   const { id } = useParams()
@@ -17,10 +17,15 @@ export const Vacation = () => {
   const { classes } = useStyleVacation()
 
   const getVacation = async (id: string) => {
-    const data = await JobsService.getVacationId(id)
-    console.log(data)
-    setVac(data)
-    setLoading(false)
+    try {
+      const data = await JobsService.getVacationId(id)
+    
+      setVac(data)
+      setLoading(false)
+    } catch (e) {
+      setLoading(false)
+    }
+    
   }
 
   useEffect(() => {
@@ -43,7 +48,7 @@ export const Vacation = () => {
             {vac && <Description html={vac.vacancyRichText} />}
           </Flex>
         ) : (
-          <NotFound />
+          <NoData />
         )}
       </>
     )
