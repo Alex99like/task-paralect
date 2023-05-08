@@ -12,6 +12,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
   const { classes } = useFormStyle()
   const { authLogin } = useActions()
   const { user } = useAppSelector(state => state.root)
+  
   useEffect(() => {
     authLogin()
   }, [authLogin])
