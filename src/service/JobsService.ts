@@ -30,8 +30,9 @@ export const JobsService = {
     const { data } = await axios.get<IVacation>(`${vacations}/${id}`, {
       ...createHeaders(),
     })
-
-    return data
+    
+    console.log(data)
+    return 'id' in data ? data : null
   },
 
   async getCategories(): Promise<Array<ICategory>> {

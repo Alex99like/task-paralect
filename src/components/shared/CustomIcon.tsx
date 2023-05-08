@@ -5,6 +5,7 @@ import IconSearch from '../../assets/search.svg'
 import IconLocation from '../../assets/location.svg'
 import IconStar from '../../assets/star.svg'
 import IconNoData from '../../assets/no-data.svg'
+import IconEmpty from '../../assets/empty.svg'
 
 import { Image, ImageProps } from '@mantine/core'
 
@@ -15,7 +16,8 @@ const arrIcons = {
   search: IconSearch,
   location: IconLocation,
   star: IconStar,
-  noData: IconNoData
+  noData: IconNoData,
+  empty: IconEmpty
 }
 
 type NameIcon = keyof typeof arrIcons

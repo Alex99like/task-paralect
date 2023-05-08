@@ -8,7 +8,7 @@ export const ListJobs = ({ vacations }: { vacations: IVacation[] }) => {
     <Flex w={'100%'} direction={'column'} gap={16} mt={16}>
       {vacations.map(card => (
         <CardJobs 
-          key={card.firm_name} 
+          key={card.id} 
           vacation={card} 
           variant='standard' 
         />

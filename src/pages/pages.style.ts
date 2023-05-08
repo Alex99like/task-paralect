@@ -28,3 +28,32 @@ export const useStyleFavorites = createStyles(() => ({
     margin: '7px auto 0'
   }
 }))
+
+export const useStyleNotFound = createStyles((theme) => ({
+  wrapper: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+
+  title: {
+    fontSize: 80,
+    color: theme.colors.bluePrimary
+  },
+
+  text: {
+    fontSize: 25,
+    fontFamily: 'Inter',
+    fontWeight: 600,
+    color: theme.colors.blackPrimary
+  }
+}))
+
+export const useStyleVacation = createStyles(() => ({
+  wrapper: {
+    minWidth: 320, 
+    width: "100%", 
+    maxWidth: 773, 
+    margin: '24px auto', 
+    flexDirection: 'column'
+  }
+}))
