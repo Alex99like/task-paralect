@@ -10,21 +10,16 @@ export const HeaderWrapper = () => {
   return (
     <Header
       height={84}
-      sx={{
-        '@media (max-width: 560px)': {
-          height: 120
-        }
-      }}
       className={classes.header}
     >  
         <Flex 
           className={classes.wrapper}
-          h={'100%'}
+          
         >
-          <Box className={classes.logoText} display={'flex'} sx={{gap: 12}}  w={141}>
+          <Box className={classes.logoText}>
             <Logo />
           </Box>
-          <Group className={classes.groupLink} display={'flex'} spacing={60}>
+          <Group className={classes.groupLink}>
             <Link 
               className={cx(classes.link, { [classes.activeLink]: pathname === '/'} )}
               to={'/'}

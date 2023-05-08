@@ -6,6 +6,7 @@ export const useStylesHeader = createStyles((theme) => ({
   },
 
   wrapper: {
+    height: '100%',
     maxWidth: 1440,
     alignItems: 'center',
     justifyContent: 'center',
@@ -37,12 +38,17 @@ export const useStylesHeader = createStyles((theme) => ({
 
   groupLink: {
     height: 20,
+    display: 'flex',
+    gap: 60,
     '@media (max-width: 560px)': {
       marginTop: 15
     },
   },
   
   logoText: {
+    display: 'flex',
+    gap: 12,  
+    width: 141,
     fontFamily: 'Poppins',
     fontWeight: 600,
     fontSize: 24,

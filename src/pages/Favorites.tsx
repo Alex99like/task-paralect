@@ -6,13 +6,16 @@ import { useActions } from "../hooks/useActions"
 import { calcPagination } from "../utils/calcPagination"
 import { useEffect } from "react"
 import { NoData } from "../components/NoData/NoData"
+import { countItemOnPage } from "../api/consts"
+import { useStyleFavorites } from "./pages.style"
 
 export const Favorites = () => {
   const { favorites, favoritePage } = useAppSelector((state) => state.jobs) 
+  const { classes } = useStyleFavorites()
   const { setFavoritePage } = useActions()
   
   useEffect(() => {
-    if (favorites.length === favoritePage * 4 - 4) {
+    if (favorites.length === favoritePage * countItemOnPage - countItemOnPage) {
       setFavoritePage(favoritePage - 1)
     }
   }, [favoritePage, favorites, setFavoritePage])
@@ -23,11 +26,14 @@ export const Favorites = () => {
   }
 
   return (
-    <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773, margin: '7px auto 0' }} direction={'column'}>
+    <Flex 
+      className={classes.wrapper}
+      direction={'column'}
+    >
       {favorites.length ? (
         <>
           <ListJobs vacations={favorites.slice(...calcPagination(favoritePage))} />
-          <Pagination totalCount={Math.ceil(favorites.length / 4)} page={favoritePage || 1} change={change} />
+          <Pagination totalCount={Math.ceil(favorites.length / countItemOnPage)} page={favoritePage || 1} change={change} />
         </>
       ) : (
         <NoData />

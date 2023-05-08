@@ -12,11 +12,12 @@ type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob>
 
 export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) => {
   const { classes } = useFormStyle()
-  const { reset } = useActions()
+  const { reset, setVacations } = useActions()
 
   const handlerReset = () => {
     reset()
     form.reset()
+    setVacations({ ...form.values, page: 1 })
   }
 
   const [ activeSelect, setActiveSelect ] = useState(false)

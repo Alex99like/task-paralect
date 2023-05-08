@@ -7,7 +7,7 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import { useActions } from '../hooks/useActions';
 import { useEffect } from 'react';
 import { Pagination } from '../components/Pagination/Pagination';
-import { useStyleJobs } from './jobs.style';
+import { useStyleJobs } from './pages.style';
 
 export interface IFormJob {
   search: string;
@@ -43,9 +43,9 @@ export const Jobs = () => {
   }, [])
   
   return (
-    <Flex className={classes.wrapper} justify={'center'} columnGap={28} style={{ margin: '24px auto' }}>
+    <Flex className={classes.wrapper}>
       <Form form={form} submit={submit} />
-      <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773 }} direction={'column'}>
+      <Flex className={classes.wrapperList}>
         <Search form={form} submit={submit} />
           {!loading ? (
             <Loader color={'#5E96FC'} variant="bars" w={'30%'} m={'70px auto'} /> 

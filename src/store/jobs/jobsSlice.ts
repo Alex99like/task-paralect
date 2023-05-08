@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { setCatagories, setVacations } from "./jobsAction";
 import { ICategory, IVacation } from "../../types/vacantion.type";
 import { IFormJob } from "../../pages/Jobs";
-import { keyStorageFavorites } from "../../api/consts";
+import { countItemOnPage, keyStorageFavorites } from "../../api/consts";
 import { getLocalStorage } from "../../utils/localStorage";
 
 interface IInitialState {
@@ -53,6 +53,7 @@ export const jobsSlice = createSlice({
     },
     removeFavorites(state, { payload }: { payload: IVacation }) {
       state.favorites = state.favorites.filter(el => el.id !== payload.id)
+      localStorage.setItem(keyStorageFavorites, JSON.stringify(state.favorites))
     },
     reset(state) {
       state.form = { ...initialFormValues }
@@ -66,7 +67,7 @@ export const jobsSlice = createSlice({
       state.loading = false
     }) 
     builder.addCase(setVacations.fulfilled, (state, { payload }) => {
-      const thisPages = Math.ceil(payload.total / 4) - 1
+      const thisPages = Math.ceil(payload.total / countItemOnPage) - 1
       state.vacations = payload.objects
       state.totalPage = thisPages < 125 ? thisPages : 125
       state.loading = true
