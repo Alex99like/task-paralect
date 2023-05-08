@@ -37,7 +37,7 @@ export const Jobs = () => {
   }
 
   useEffect(() => {
-    setVacations({ page: countPage, ...form.values })
+    vacations.length === 0 && setVacations({ page: countPage, ...form.values })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
@@ -47,7 +47,7 @@ export const Jobs = () => {
       <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773 }} direction={'column'}>
         <Search form={form} submit={submit} />
           {!loading ? (
-            <Loader variant="bars" w={'30%'} m={'70px auto'} /> 
+            <Loader color={'#5E96FC'} variant="bars" w={'30%'} m={'70px auto'} /> 
           ) : (
             <>
               <ListJobs vacations={vacations} />

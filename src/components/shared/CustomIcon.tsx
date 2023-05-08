@@ -1,10 +1,10 @@
-import IconArrow from '../assets/down.svg'
-import IconLogo from '../assets/logo.svg'
-import IconReset from '../assets/reset.svg'
-import IconSearch from '../assets/search.svg'
-import IconLocation from '../assets/location.svg'
-import IconStar from '../assets/star.svg'
-import IconNoData from '../assets/no-data.svg'
+import IconArrow from '../../assets/down.svg'
+import IconLogo from '../../assets/logo.svg'
+import IconReset from '../../assets/reset.svg'
+import IconSearch from '../../assets/search.svg'
+import IconLocation from '../../assets/location.svg'
+import IconStar from '../../assets/star.svg'
+import IconNoData from '../../assets/no-data.svg'
 
 import { Image, ImageProps } from '@mantine/core'
 

@@ -9,13 +9,14 @@ export const useSearchStyle = createStyles((theme) => ({
     minWidth: 320, 
     width: "100%", 
     maxWidth: 773,
-    border: '1px solid #EAEBED',
+    border: `1px solid ${theme.colors.gray}`,
     borderRadius: 8,
     height: 48,
     fontSize: 14,
     
     '::placeholder': {
       padding: 0,
+      color: theme.colors.placeholderColor,
       fontFamily: 'Inter'
     }
   },
@@ -26,9 +27,19 @@ export const useSearchStyle = createStyles((theme) => ({
 
   button: {
     width: 83,
+    marginRight: 4,
+    //padding: '10px 20px',
     height: 32,
-    background: '#5E96FC',
+    background: theme.colors.blue,
     borderRadius: 8,
     fontWeight: 400,
+
+    ':hover': {
+      background: theme.colors.blueHover
+    },
+
+    ':active': {
+      background: theme.colors.blueActive
+    }
   }
 }))

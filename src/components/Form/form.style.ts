@@ -7,7 +7,7 @@ export const useFormStyle = createStyles((theme) => ({
     fontSize: 20,
     lineHeight: 1,
     letterSpacing: 0,
-    background: '#fff',
+    background: theme.colors.white,
     color: theme.colors.blackPrimary,
   },
 
@@ -18,11 +18,11 @@ export const useFormStyle = createStyles((theme) => ({
   },
 
   mtOne: {
-    marginTop: 18
+    marginTop: 20
   },
 
   mtTwo: {
-    marginTop: 4
+    marginTop: 6
   },
 
   label: {
@@ -30,29 +30,26 @@ export const useFormStyle = createStyles((theme) => ({
     fontSize: 16,
     letterSpacing: -0.2,
     lineHeight: 0,
-    marginBottom: 18
+    marginBottom: 17
   },
 
-  reset: {
-    color: '#ACADB9',
-    fontFamily: 'Inter',
-    fontWeight: 500,
-    fontSize: 14,
-    lineHeight: 1.5,
-    display: 'flex',
-    gap: 3,
-    
+  labelIndustry: {
+    fontWeight: 700,
+    fontSize: 16,
+    letterSpacing: -0.2,
+    lineHeight: 0,
+    marginBottom: 19
   },
 
   wrapper: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.white,
     padding: 20,
     paddingLeft: 19,
     paddingBottom: 18,
     width: 315,
     minWidth: 315,
     height: 360,
-    border: '1px solid #EAEBED',
+    border: `1px solid ${theme.colors.gray}`,
     borderRadius: 12,
     display: 'flex',
     justifyContent: 'space-between',
@@ -74,12 +71,36 @@ export const useFormStyle = createStyles((theme) => ({
     alignSelf: 'end',
     letterSpacing: 0.1,
     fontFamily: 'Inter',
+
+    ':hover': {
+      background: theme.colors.blueHover
+    },
+
+    ':active': {
+      background: theme.colors.blueActive
+    }
+  },
+
+  inputWrapper: {
+    height: 42,
+    background: theme.colors.white,
+    border: `1px solid ${theme.colors.borderGray}`,
+    borderRadius: 8,
+    padding: 11,
+    paddingBottom: 13,
+    '::placeholder': {
+      color: theme.colors.placeholderColor,
+      fontFamily: 'Inter',
+      fontWeight: 400,
+      fontSize: 14,
+    }
+  },
+
+  inputCss: {
+    right: 9, 
+    top: 0,
   }
 }))
-
-export const inputNumWrapper: CSSObject = { 
-  
-}
 
 export const controlCss: Record<string, CSSObject> = {
   input: {
@@ -88,12 +109,14 @@ export const controlCss: Record<string, CSSObject> = {
     border: '1px solid #D5D6DC',
     borderRadius: 8, 
     padding: 11,
+    paddingBottom: 14,
     
     '::placeholder': {
       fontFamily: 'Inter',
       fontWeight: 400,
       left: 1,
       fontSize: 14,
+      color: '#ACADB9',
     }
   },
   control: {
@@ -102,7 +125,7 @@ export const controlCss: Record<string, CSSObject> = {
   controlUp: {
     border: 'none',
     width: 40,
-    stroke: 'lightgrey',
+    
     alignSelf: 'center',
     color: 'rgba(172, 173, 185, 1)',
     paddingTop: 7,
@@ -112,8 +135,10 @@ export const controlCss: Record<string, CSSObject> = {
   controlDown: {
     border: 'none',
     width: 40,
-    stroke: 'lightgrey',
     alignSelf: 'center',
+    'path': {
+      strokeWidth: 4,
+    },
     color: 'rgba(172, 173, 185, 1)',
     paddingBottom: 10,
     borderBottomRightRadius: 20,

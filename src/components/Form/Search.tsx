@@ -17,7 +17,6 @@ export const Search = ({ form, submit }: { form: FormProps, submit: () => void }
           }}
           onChange={(e) => form.setFieldValue('search', e.target.value)}
           icon={<Image style={{ width: 16 }} src={SearchIcon} />}
-          size="md"
           iconWidth={35}
           style={{ minWidth: 320, width: "100%", maxWidth: 773 }}
           rightSection={

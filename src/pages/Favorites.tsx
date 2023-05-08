@@ -23,7 +23,7 @@ export const Favorites = () => {
   }
 
   return (
-    <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773, margin: '0 auto' }} direction={'column'}>
+    <Flex style={{ minWidth: 320, width: "100%", maxWidth: 773, margin: '7px auto 0' }} direction={'column'}>
       {favorites.length ? (
         <>
           <ListJobs vacations={favorites.slice(...calcPagination(favoritePage))} />

@@ -58,8 +58,9 @@ export const jobsSlice = createSlice({
       state.loading = false
     }) 
     builder.addCase(setVacations.fulfilled, (state, { payload }) => {
+      const thisPages = Math.ceil(payload.total / 4) - 1
       state.vacations = payload.objects
-      state.totalPage = payload.total / 4
+      state.totalPage = thisPages < 125 ? thisPages : 125
       state.loading = true
     }) 
   }

@@ -6,9 +6,11 @@ export const usePaginationStyle = createStyles((theme) => ({
   },
 
   dots: {
+    border: `1px solid ${theme.colors.borderGray}`,
+    borderRadius: 4,
     fontFamily: 'Inter',
     '&[data-active]': {
-      background: '#5E96FC',
+      background: theme.colors.blue,
     },
   }
 }))

@@ -1,10 +1,10 @@
 import { Card, Text, Box, Title, Flex } from '@mantine/core'
 import { IVacation } from "../../types/vacantion.type"
 import { useCardStyle } from './list-jobs.type'
-import { CustomIcon } from '../../utils/CustomIcon'
+import { CustomIcon } from '../shared/CustomIcon'
 import { Link } from 'react-router-dom'
 import { parseSalary } from '../../utils/string'
-import { StarIcon } from '../../utils/StarIcon'
+import { StarIcon } from '../shared/StarIcon'
 import { useActions } from '../../hooks/useActions'
 import { useAppSelector } from '../../hooks/useAppSelector'
 
@@ -74,7 +74,7 @@ export const CardJobs = ({ vacation, variant }: { vacation: IVacation, variant: 
         display={'flex'} 
         style={{ gap: 8, alignItems: 'center' }} 
         ml={1} 
-        mt={variant === 'standard' ? 8 : 10}
+        mt={variant === 'standard' ? 7 : 10}
       >
         <CustomIcon name='location' width={20} height={20} />
         <Text className={classes.description}>{town.title}</Text>

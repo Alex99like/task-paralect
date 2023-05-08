@@ -1,34 +1,13 @@
 import { controlCss, useFormStyle } from "./form.style"
-import { Text, UnstyledButton, NumberInput, Select, Button, CSSObject } from '@mantine/core'
-import ResetIcon from '../../assets/reset.svg'
+import { Text, NumberInput, Select, Button } from '@mantine/core'
 import { UseFormReturnType } from "@mantine/form"
 import { IFormJob } from "../../pages/Jobs"
 import { useCategories } from "../../hooks/useCategories"
-import { ArrowIcon } from "../../utils/ArrowIcon"
+import { ArrowIcon } from "../shared/ArrowIcon"
 import { useState } from "react"
-
-const inputCss: CSSObject = {
-  background: 'transparent', 
-  right: 6, 
-  top: 0,
-}
-
-const inputWrapper: CSSObject = {
-  height: 42,
-  background: '#FFFFFF',
-  border: '1px solid #D5D6DC',
-  borderRadius: 8,
-  padding: 11,
-  paddingBottom: 13,
-  '::placeholder': {
-    fontFamily: 'Inter',
-    fontWeight: 400,
-    fontSize: 14,
-  }
-}
+import { ButtonReset } from "../shared/ButtonReset"
 
 type FormProps = UseFormReturnType<IFormJob, (values: IFormJob) => IFormJob> 
-
 
 export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) => {
   const { classes } = useFormStyle()
@@ -38,24 +17,20 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
   return (
     <form className={classes.wrapper}>
       <Text className={classes.text}>Фильтры</Text>
-      <UnstyledButton 
-        className={classes.reset}
-      >
-        Сбросить все 
-        <img className={classes.img} src={ResetIcon} style={{ top: 2 }} />
-      </UnstyledButton>
+        <ButtonReset />
         <Select
+          defaultChecked={true}
           label="Отрасль"
           placeholder="Выберете отрасль"
           data={options}
           onDropdownOpen={() => setActiveSelect(true)}
           onDropdownClose={() => setActiveSelect(false)}
           rightSection={<ArrowIcon active={activeSelect} />}
-          rightSectionProps={{ style: inputCss }}
+          rightSectionProps={{ className: classes.inputCss }}
+          rightSectionWidth={47}
           w={'100%'}
-          className={classes.mtOne}
+          classNames={{ root: classes.mtOne, input: classes.inputWrapper }}
           labelProps={{ className: classes.label }}
-          styles={{input: inputWrapper }}
           value={form.values.industry}
           onChange={(e) => form.setFieldValue('industry', e)}
       />
@@ -65,25 +40,23 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
         placeholder="От"
         w={'100%'}
         className={classes.mtTwo}
-        labelProps={{ className: classes.label }}
+        labelProps={{ className: classes.labelIndustry }}
         rightSectionWidth={35}
         styles={{ ...controlCss }}
         step={1000}
         min={0}
         value={form.values.from}
-        rightSectionProps={{ style: { border: '#fff' } }}
         onChange={(e) => form.setFieldValue('from', e)}
       />
       <NumberInput
         variant="default"
         w={'100%'}
         placeholder="До"
-        labelProps={{ className: classes.label }}
         rightSectionWidth={35}
-        styles={{ ...controlCss }}
+        styles={{ ...controlCss, wrapper: { marginBottom: 4 } }}
+        min={form.values.from || 0}
         step={1000}
         value={form.values.to}
-        rightSectionProps={{ style: { border: '#fff' } }}
         onChange={(e) => form.setFieldValue('to', e)}
       />
 

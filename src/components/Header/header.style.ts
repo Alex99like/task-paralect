@@ -47,7 +47,7 @@ export const useStylesHeader = createStyles((theme) => ({
     fontWeight: 600,
     fontSize: 24,
     position: 'absolute',
-    left: '11.5%',
+    left: '11.2%',
     letterSpacing: '-0.02em',
 
     '@media (max-width: 800px)': {

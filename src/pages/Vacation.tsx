@@ -12,7 +12,7 @@ export const Vacation = () => {
   const { id } = useParams()
   const [vac, setVac] = useState<IVacation | null>(null)
   const { state } = useLocation()
-  console.log(state)
+
   //const data = !!id && vacations.find(el => +id === el.id)
 
   const getVacation = async (id: string) => {

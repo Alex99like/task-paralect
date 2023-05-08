@@ -1,5 +1,5 @@
 import { Flex } from "@mantine/core"
-import { CustomIcon } from "../../utils/CustomIcon"
+import { CustomIcon } from "../shared/CustomIcon"
 import { Text } from '@mantine/core'
 import { useNoDataStyle } from "./noData.type"
 import { Link } from "react-router-dom"
@@ -8,7 +8,7 @@ export const NoData = () => {
   const { classes } = useNoDataStyle()
 
   return (
-    <Flex direction={'column'} mt={105} align={'center'}>
+    <Flex direction={'column'} mt={98} align={'center'}>
       <CustomIcon 
         classNames={{ 
           imageWrapper: classes.imageWrapper,

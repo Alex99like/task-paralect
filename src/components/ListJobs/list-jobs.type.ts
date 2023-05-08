@@ -1,25 +1,25 @@
 import { createStyles } from '@mantine/core'
 
-export const useCardStyle = createStyles(() => ({
+export const useCardStyle = createStyles((theme) => ({
   wrapper: {
-    background: '#FFFFFF',
-    border: '1px solid #EAEBED',
+    background: theme.colors.white,
+    border: `1px solid ${theme.colors.gray}`,
     borderRadius: 12,
     minHeight: 137,
   },
 
   wrapperVacation: {
-    background: '#FFFFFF',
-    border: '1px solid #EAEBED',
+    background: theme.colors.white,
+    border: `1px solid ${theme.colors.gray}`,
     borderRadius: 12,
     minHeight: 157,
   },
 
   boxWrap: {
-   columnGap: 12, 
-    marginTop: 8,
+   columnGap: 13, 
+    marginTop: 7,
     display: 'flex',
-    color: '#7B7C88',
+    color: theme.colors.grayLight,
     '@media (max-width: 520px)': {
       flexDirection: 'column'
     },
@@ -30,7 +30,7 @@ export const useCardStyle = createStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     marginTop: 10,
-    color: '#7B7C88',
+    color: theme.colors.grayLight,
 
     '@media (max-width: 520px)': {
       flexDirection: 'column',
@@ -45,7 +45,7 @@ export const useCardStyle = createStyles(() => ({
     right: 20,
     top: 20,
     cursor: 'pointer',
-    stroke: '#5E96FC',
+    stroke: theme.colors.blue,
   },
 
   title: {
@@ -53,7 +53,7 @@ export const useCardStyle = createStyles(() => ({
     maxWidth: 'calc(100% - 40px)',
     fontWeight: 600,
     fontSize: 20,
-    color: '#5E96FC',
+    color: theme.colors.blue,
     fontFamily: 'Inter',
 
     '@media (max-width: 520px)': {
@@ -65,7 +65,7 @@ export const useCardStyle = createStyles(() => ({
     fontFamily: 'Inter',
     fontWeight: 700,
     fontSize: 28,
-    color: '#232134',
+    color: theme.colors.blackPrimary,
 
     '@media (max-width: 520px)': {
       fontSize: 18
@@ -82,28 +82,28 @@ export const useCardStyle = createStyles(() => ({
     fontFamily: 'Inter',
     fontWeight: 600,
     fontSize: 16,
-    color: '#232134'
+    color: theme.colors.blackPrimary
   },
 
   priceVacation: {
     fontFamily: 'Inter',
     fontWeight: 700,
     fontSize: 20,
-    color: '#232134'
+    color: theme.colors.blackPrimary
   },
 
   typeWork: {
     fontFamily: 'Inter',
     fontWeight: 400,
     fontSize: 16,
-    color: '#232134',
+    color: theme.colors.blackPrimary,
   },
 
   typeWorkVacation: {
     fontFamily: 'Inter',
     fontWeight: 400,
     fontSize: 20,
-    color: '#232134',
+    color: theme.colors.blackPrimary,
   },
 
   dot: {

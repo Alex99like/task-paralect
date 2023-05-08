@@ -18,9 +18,18 @@ function App() {
           padding: 0,
           fontFamily: 'Inter',
         }),
+        
         colors: {
           bluePrimary: ['#5E96FC'],
-          blackPrimary: ['#232134']
+          blue: ['#5E96FC'],
+          blueHover: ['#3B7CD3'],
+          blueActive: ['#92C1FF'],
+          blackPrimary: ['#232134'],
+          gray: ['#EAEBED'],
+          borderGray: ['#D5D6DC'],
+          grayLight: ['#7B7C88'],
+          white: ['#FFFFFF'],
+          placeholderColor: ['#ACADB9']
         },
       }}
       >
