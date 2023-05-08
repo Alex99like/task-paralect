@@ -61,7 +61,6 @@ export const Form = ({ form, submit }: { form: FormProps, submit: () => void }) 
       />
       <NumberInput
         data-elem="salary-to-input"
-        variant="default"
         w={'100%'}
         placeholder="До"
         rightSectionWidth={35}

@@ -3,8 +3,10 @@ import { createStyles, UnstyledButton, UnstyledButtonProps } from '@mantine/core
 const useStarStyle = createStyles((theme) => ({
   icon: {
     position: 'relative',
-    right: 9,
-    top: 4,
+    height: 22,
+    width: 22,
+    right: 4.5,
+    top: 2,
     minWidth: 20,
     cursor: 'pointer',
 
@@ -15,6 +17,23 @@ const useStarStyle = createStyles((theme) => ({
       
     }
   },
+  iconVacation: {
+    height: 22,
+    width: 22,
+    position: 'relative',
+    right: 3,
+    top: 0,
+    minWidth: 20,
+    cursor: 'pointer',
+
+    ':hover': {
+      'path': {
+        stroke: theme.colors.bluePrimary
+      }
+      
+    }
+  },
+
   active: {
     fill: theme.colors.bluePrimary,
     'path': {
@@ -23,11 +42,15 @@ const useStarStyle = createStyles((theme) => ({
   }
 }))
 
-export const StarIcon = ({ addFav, active = false, ...rest }: { active: boolean, addFav: () => void } & UnstyledButtonProps) => {
+export const StarIcon = ({ addFav, active = false, variant = 'standard', ...rest }: { active: boolean, variant: 'standard' | 'vacation', addFav: () => void } & UnstyledButtonProps) => {
   const { classes, cx } = useStarStyle()
 
   return (
     <UnstyledButton 
+      className={cx({
+        [classes.icon]: variant === 'standard',
+        [classes.iconVacation]: variant === 'vacation'
+      })}
       onClick={addFav} 
       {...rest}
     >

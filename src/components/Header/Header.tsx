@@ -21,7 +21,7 @@ export const HeaderWrapper = () => {
           </Box>
           <Group className={classes.groupLink}>
             <Link 
-              className={cx(classes.link, { [classes.activeLink]: pathname === '/'} )}
+              className={cx(classes.link, { [classes.activeLink]: pathname === '/' || pathname.startsWith('/vacation')} )}
               to={'/'}
             >Поиск Вакансий
             </Link>

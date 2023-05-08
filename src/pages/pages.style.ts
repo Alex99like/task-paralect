@@ -25,7 +25,7 @@ export const useStyleFavorites = createStyles(() => ({
     minWidth: 320, 
     width: "100%", 
     maxWidth: 773, 
-    margin: '7px auto 0'
+    margin: '8px auto 0'
   }
 }))
 

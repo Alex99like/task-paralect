@@ -49,9 +49,9 @@ export const CardJobs = ({ vacation, variant }: { vacation: IVacation, variant: 
     >
       <Flex justify={'space-between'}>
         {title(variant)}
-        <></>
-        <StarIcon 
+        <StarIcon
           data-elem={`vacancy-${id}-shortlist-button`}
+          variant={variant}
           addFav={changeFav} 
           active={!!favorites.find(el => id === el.id)} 
         />

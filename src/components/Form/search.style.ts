@@ -28,7 +28,7 @@ export const useSearchStyle = createStyles((theme) => ({
 
   button: {
     width: 83,
-    marginRight: 4,
+    marginRight: 3,
     //padding: '10px 20px',
     height: 32,
     background: theme.colors.bluePrimary,
